@@ -26,9 +26,12 @@ Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 
-colorscheme harlequin
-
+set encoding=utf-8
+syntax enable
 set background=dark
+"colorscheme harlequin
+let g:solarized_termcolors=16
+colorscheme solarized
 
 filetype plugin indent on
 set rnu
@@ -38,11 +41,23 @@ set number
 "airline config
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_sep = '|'
 let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#buffer_nr_show = 1
 
-let g:airline_theme='murmur'
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+let g:airline_theme='lucius'
+"let g:airline_theme='murmur'
+"let g:airline_theme='solarized'
+"let g:airline_solarized_bg='dark'
+
+let g:airline#extensions#ycm#enabled = 1
+let g:airline#extensions#ycm#error_symbol = 'E:'
+let g:airline#extensions#ycm#warning_symbol = 'W:'
 
 let g:airline#extensions#branch#enabled = 1
 
@@ -64,16 +79,18 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "IndentGuides config
 let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size = 1
+let g:indent_guides_guide_size = 2
 "let g:indent_guides_start_level = 2
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=236
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=236
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=NONE
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=black
 
 "Higlight current line
 set cursorline
-hi CursorLine cterm=NONE ctermbg=236
+hi CursorLine cterm=NONE ctermbg=black
+"hi CursorLine cterm=NONE ctermbg=236
 
+let g:ycm_server_python_interpreter = '/usr/bin/python2'
 "Set path for YCM clang autocompletion
 "let g:ycm_global_ycm_extra_conf = 0
 
@@ -118,8 +135,8 @@ set ignorecase
 set smartcase
 
 "Save folds when closing file and reload folds when reopening file
-au BufWinLeave * mkview
-au BufWinEnter * silent loadview
+au BufWinLeave *.* mkview
+au BufWinEnter *.* silent loadview
 
 "Navigate buffers with tab, shift-tab
 nmap <Tab> :bnext!<CR>
@@ -133,9 +150,9 @@ nmap <silent> <C-S-l> :wincmd l<CR>
 
 "Default tabbing behaviour
 set expandtab
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+set tabstop=2
+set softtabstop=-1
+set shiftwidth=0
 
 "Alternative escape key
 imap jk <Esc>
