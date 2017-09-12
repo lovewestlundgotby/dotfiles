@@ -1,0 +1,143 @@
+!##################################
+!# Define colors (Solarized dark) #
+!##################################
+
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+*background:            S_base03
+*foreground:            S_base0
+*fadeColor:             S_base03
+*cursorColor:           S_base1
+*pointerColorBackground:S_base01
+*pointerColorForeground:S_base1
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+!! black dark/light
+*color0:                S_base02
+*color8:                S_base03
+
+!! red dark/light
+*color1:                S_red
+*color9:                S_orange
+
+!! green dark/light
+*color2:                S_green
+*color10:               S_base01
+
+!! yellow dark/light
+*color3:                S_yellow
+*color11:               S_base00
+
+!! blue dark/light
+*color4:                S_blue
+*color12:               S_base0
+
+!! magenta dark/light
+*color5:                S_magenta
+*color13:               S_violet
+
+!! cyan dark/light
+*color6:                S_cyan
+*color14:               S_base1
+
+!! white dark/light
+*color7:                S_base2
+*color15:               S_base3
+
+!!#################
+!!# rofi settings #
+!!#################
+!! Define colors for rofi
+!!
+!! A lot of them are just transparent so only the background is shown
+!!
+!! Dark gray
+!#define bg_color        #002f343f
+!! White-gray
+!#define fg_color        #f3f4f5
+!!
+!#define bg_color_alt    #002f343f
+!!
+!#define hl_bg_color     #002f343f
+!! Cyan
+!#define hl_fg_color     #2aa198
+!!
+!#define bd_color        #002f343f
+!!
+!#define sp_color        #252933
+!
+!rofi.color-enabled:     True
+!! State:            Background  Foreground,     Background-alt,     Highlight bg,   Highlight fg
+!rofi.color-normal:  bg_color,   fg_color,       bg_color_alt,       hl_bg_color,    hl_fg_color
+!rofi.color-urgent:  #ff0000,    #ff0000,        #ff0000,            #ff0000,        #ff0000
+!rofi.color-active:  #00ff00,    #00ff00,        #00ff00,            #00ff00,        #00ff00
+!
+!!                   Background  Border      Separator
+!rofi.color-window:  #cc2f343f,  bd_color,   sp_color
+!
+!rofi.fake-transparency: True
+
+!##################
+!# URxvt settings #
+!##################
+
+!
+! Effects
+!
+! Number of extra points between rows
+URxvt.lineSpace:                0
+! Number of extra (or less) points between characters
+URxvt.letterSpace:              0
+! Enable transparency
+URxvt*transparent:              true
+! Percentage of shading on transparency
+URxvt*shading:                  25
+! Percentage of fading on unfocused urxvt terminals
+URxvt*fading:                   15
+! Fading color
+URxvt*fadeColor:                Black
+URxvt*cursorBlink:              True
+
+URxvt*scrollBar:                False
+
+!
+! Borders
+!
+! Pixels of external border
+URxvt.externalBorder:           0
+! Pixels of internal border
+URxvt.internalBorder:           2
+
+! Colors
+! Foreground color
+URxvt*foreground:               White
+! Background color
+URxvt*background:               Black
+! Border color
+URxvt*colorBD:                  Magenta
+! Cursor color
+URxvt*cursorColor:              White
+! Cursor text color
+URxvt*cursorColor2:             Black
+
+!
+! Fonts
+!
+! Hack font patched with icons from FontAwesome
+URxvt.font: xft:Knack Nerd Font Mono:size=9
+!URxvt.font: xft:Hack:size=9,
