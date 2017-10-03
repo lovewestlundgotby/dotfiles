@@ -150,10 +150,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 5 ppt
+        bindsym j resize grow height 10 px or 5 ppt
+        bindsym k resize shrink height 10 px or 5 ppt
+        bindsym l resize grow width 10 px or 5 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -177,7 +177,7 @@ bindsym $mod+shift+x exec /home/love/.config/i3/lock.sh
 exec --no-startup-id compton -CGb
 
 # Always set wallpaper, to change, make a copy of another picture called 'wallpaper.png' or whatever
-exec_always feh --bg-scale /home/love/Pictures/wallpaper.png
+exec_always feh --bg-scale /home/love/Pictures/wallpaper.*
 
 # Run Spotify on startup
 exec spotify
@@ -187,6 +187,9 @@ exec setxkbmap -option compose:ralt
 
 # Start notification server dunst
 exec dunst
+
+# Start redshift
+exec --no-startup-id redshift
 
 # Start the autolock script -- don't lock automatically
 #exec sh ~/.config/i3/xautolock_start.sh
@@ -253,3 +256,4 @@ bindsym Ctrl+Shift+Print exec maim -i $(xdotool getactivewindow) | xclip -select
 
 # Print the current view and save to ~/Pictures/ with formatted date and time as name
 bindsym Print exec maim ~/Pictures/screenshot_$(date +%Y%m%d)_$(date +%H%M%S).png
+

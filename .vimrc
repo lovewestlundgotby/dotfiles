@@ -26,14 +26,16 @@ Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 
+autocmd bufwritepost .vimrc source $MYVIMRC
+
 set encoding=utf-8
-syntax enable
 set background=dark
 "colorscheme harlequin
 let g:solarized_termcolors=16
 colorscheme solarized
 
 filetype plugin indent on
+syntax enable
 set rnu
 set number
 "set guifont=Anonymous\ Pro\ 16
@@ -89,6 +91,8 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=black
 set cursorline
 hi CursorLine cterm=NONE ctermbg=black
 "hi CursorLine cterm=NONE ctermbg=236
+set colorcolumn=80
+
 
 let g:ycm_server_python_interpreter = '/usr/bin/python2'
 "Set path for YCM clang autocompletion
@@ -106,13 +110,13 @@ set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 
-let mapleader = ","
-imap <Leader>e ä
-imap <Leader>a å
-imap <Leader>o ö
-imap <Leader>E Ä
-imap <Leader>A Å
-imap <Leader>O Ö
+"let mapleader = ","
+"imap <Leader>e ä
+"imap <Leader>a å
+"imap <Leader>o ö
+"imap <Leader>E Ä
+"imap <Leader>A Å
+"imap <Leader>O Ö
 
 "Keep x number of lines closest to top/bottom when scrolling up/down
 set scrolloff=8
@@ -134,13 +138,30 @@ set ignorecase
 "Force case sensitive search whenever capital letters are used
 set smartcase
 
+function! WriteCompileTex()
+  write
+  let fts = ['tex']
+  if index(fts, &filetype) != -1
+    " do stuff
+    :! latexmk -r ~/.config/latexmk/latexmkrc -pdf %
+  endif
+endfunction
+"command Wc :call WriteCompileTex()
+map <F2> :call WriteCompileTex()<CR>
+
 "Save folds when closing file and reload folds when reopening file
 au BufWinLeave *.* mkview
 au BufWinEnter *.* silent loadview
 
+" Persistent undo
+set undofile
+set undodir=$HOME/.vim/undo
+set undolevels=1000
+set undoreload=10000
+
 "Navigate buffers with tab, shift-tab
-nmap <Tab> :bnext!<CR>
-nmap <S-Tab> :bprevious!<CR>
+nmap <silent> <Tab> :bnext!<CR>
+nmap <silent> <S-Tab> :bprevious!<CR>
 
 "Navigate splits with ctrl-hjkl
 nmap <silent> <C-S-k> :wincmd k<CR>
@@ -153,6 +174,9 @@ set expandtab
 set tabstop=2
 set softtabstop=-1
 set shiftwidth=0
+
+"Word wrap behaviuor
+set linebreak
 
 "Alternative escape key
 imap jk <Esc>
