@@ -134,6 +134,7 @@ for_window [class="^Chromium$"] focus
 #assign [class="^Spotify$" instance="^spotify$"] → $workspace10
 for_window [class="Spotify"] move to workspace $workspace10
 for_window [class="MATLAB R2017a - academic use" title="Figure*"] floating enabled
+for_window [class="matplotlib"] floating enabled
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
