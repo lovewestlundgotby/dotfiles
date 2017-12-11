@@ -72,6 +72,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:SuperTabClosePreviewOnPopupClose = 1
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
@@ -81,7 +82,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "IndentGuides config
 let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size = 2
+let g:indent_guides_guide_size = 4
 "let g:indent_guides_start_level = 2
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=NONE
@@ -171,7 +172,7 @@ nmap <silent> <C-S-l> :wincmd l<CR>
 
 "Default tabbing behaviour
 set expandtab
-set tabstop=2
+set tabstop=4
 set softtabstop=-1
 set shiftwidth=0
 
