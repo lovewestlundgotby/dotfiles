@@ -23,6 +23,12 @@ Plugin 'gmarik/Vundle.vim'
 "" Auto completion {{{
     Plugin 'Valloric/YouCompleteMe'     " Auto complete engine
     Plugin 'ervandew/supertab'
+    Plugin 'Quramy/tsuquyomi'
+"" }}}
+
+"" Syntax highlighting {{{
+    Plugin 'leafgarland/typescript-vim'
+    Plugin 'HerringtonDarkholme/yats.vim'
 "" }}}
 
 "" Git {{{
