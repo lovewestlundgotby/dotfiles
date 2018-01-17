@@ -3,7 +3,8 @@
 # Pause music on screen lock -- don't pause music
 #sh /usr/local/bin/music.sh stop
 
-font="Source Code Pro"
+#font="System San Francisco Display"
+font="SFNS-Display"
 
 frosted='#ffffff22'  # clear ish
 
@@ -43,7 +44,7 @@ i3lock                      \
 --textcolor=$base1          \
 --timecolor=$base1          \
 --datecolor=$base1          \
---keyhlcolor=$base03          \
+--keyhlcolor=$base03        \
 --bshlcolor=$magenta        \
 \
 --screen 0                  \
