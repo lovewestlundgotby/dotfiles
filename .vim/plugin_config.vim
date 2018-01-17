@@ -19,6 +19,12 @@ let g:airline#extensions#ycm#enabled = 1
 let g:airline#extensions#ycm#error_symbol = 'E:'
 let g:airline#extensions#ycm#warning_symbol = 'W:'
 let g:ycm_server_python_interpreter = '/usr/bin/python2'
+
+" Typescript completion
+if !exists("g:ycm_semantic_triggers")
+    let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
 "" }}}
 
 
