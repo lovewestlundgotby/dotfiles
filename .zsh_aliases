@@ -13,6 +13,20 @@ alias sudo='nocorrect sudo'
 # display core temps
 alias temps='sensors'
 
+##########
+# pacman #
+##########
+# For more information: https://wiki.archlinux.org/index.php/Pacman/Rosetta
+
+# Perform a system upgrade
+alias upgrade='sudo pacman -Syu'
+
+# Clean up all local caches
+alias autoclean='sudo pacman -Sc'
+
+# Remove unneeded dependencies
+alias autoremove='sudo pacman -Qdtq | sudo pacman -Rs -'
+
 ################
 # maim aliases #
 ################
