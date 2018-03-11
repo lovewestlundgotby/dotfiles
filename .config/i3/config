@@ -13,11 +13,9 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-#font pango:Anonymous Pro Italic 11
 font pango: SFNS Display 11
     # System San Fransisco Display 11
 #font pango:Knack Nerd Font Mono 11
-#font pango: monospace 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -46,7 +44,8 @@ bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher) -- replaced with rofi
-bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -line-margin 25 -separator-style "solid" -hide-scrollbar -width 30 -padding 0 -bw 50 -font "Hack 18"
+# to change visuals, see .config/rofi/config
+bindsym $mod+d exec rofi -show run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
@@ -100,7 +99,7 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 set $workspace1 "1 "
-set $workspace2 "2 "
+set $workspace2 "2 "
 set $workspace3 "3"
 set $workspace4 "4"
 set $workspace5 "5"
@@ -159,15 +158,15 @@ mode "resize" {
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 5 ppt
-        bindsym j resize grow height 10 px or 5 ppt
-        bindsym k resize shrink height 10 px or 5 ppt
+        bindsym j resize shrink height 10 px or 5 ppt
+        bindsym k resize grow height 10 px or 5 ppt
         bindsym l resize grow width 10 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 10 px or 2 ppt
+        bindsym Down resize grow height 10 px or 2 ppt
+        bindsym Up resize shrink height 10 px or 2 ppt
+        bindsym Right resize grow width 10 px or 2 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -182,7 +181,7 @@ bindsym $mod+shift+x exec /home/love/.config/i3/betterlockscreen.sh --lock
 # Commands run with i3
 
 # Start compton
-exec --no-startup-id compton -CGb
+exec --no-startup-id compton --config ~/.config/compton/compton.conf -CGb
 
 # Always set wallpaper, to change, make a copy of another picture called 'wallpaper.png' or whatever
 exec_always feh --bg-scale /home/love/Pictures/wallpaper.*
@@ -190,14 +189,19 @@ exec_always feh --bg-scale /home/love/Pictures/wallpaper.*
 # Run Spotify on startup
 exec spotify
 
+# Setting caps to 'none' makes it genereate 'VoidSymbol' on press which is
+# intercepted to run the script '~/scripts/change_keyboard_layout.sh'
 # Set rctrl as the compose key on startup
-exec setxkbmap -option compose:ralt
+exec setxkbmap -option 'caps:none, compose:ralt'
 
 # Start notification server dunst
 exec dunst
 
 # Start redshift
 exec --no-startup-id redshift
+
+# Start Network Manager Applet nm-applet
+exec nm-applet
 
 # Start the autolock script -- don't lock automatically
 #exec sh ~/.config/i3/xautolock_start.sh
@@ -247,6 +251,12 @@ bindsym F7 exec playerctl previous
 # Play next song
 bindsym F9 exec playerctl next
 
+
+# Caps lock switch keyboard layout
+bindsym VoidSymbol exec ~/scripts/change_keyboard_layout.sh
+# i3blocks caps lock signals
+bindsym --release VoidSymbol exec pkill -SIGRTMIN+11 i3blocks
+
 # i3blocks mediaplayer signals for updating the i3blocks in the i3bar
 bindsym --release F7 exec pkill -SIGRTMIN+10 i3blocks
 bindsym --release F8 exec pkill -SIGRTMIN+10 i3blocks
@@ -254,7 +264,7 @@ bindsym --release F9 exec pkill -SIGRTMIN+10 i3blocks
 bindsym --release XF86AudioLowerVolume exec pkill -SIGRTMIN+10 i3blocks
 bindsym --release XF86AudioRaiseVolume exec pkill -SIGRTMIN+10 i3blocks
 
-# Sreen brightness controls
+# Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
