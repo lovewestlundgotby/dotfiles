@@ -1,5 +1,5 @@
 ! "Enabled modi" Set from: Default
-! rofi.modi:                           window,run,ssh
+ rofi.modi:                           window,drun
 ! "Window width" Set from: File
 rofi.width:                          1920
 ! "Number of lines" Set from: File
@@ -7,8 +7,7 @@ rofi.lines:                          19
 ! "Number of columns" Set from: Default
 ! rofi.columns:                        1
 ! "Font to use" Set from: File
-!rofi.font:                           SFNS Display 16
-rofi.font:                           SF UI Display Medium 16
+rofi.font:                           SFNS Display 16
 ! "Border width" Set from: File
 rofi.bw:                             0
 ! "Location on screen" Set from: File
@@ -24,7 +23,7 @@ rofi.padding:                        600
 ! "Whether to load and show icons" Set from: Default
 ! rofi.show-icons:                     false
 ! "Terminal to use" Set from: Default
-! rofi.terminal:                       rofi-sensible-terminal
+rofi.terminal:                          rofi-sensible-terminal
 ! "Ssh client to use" Set from: Default
 ! rofi.ssh-client:                     ssh
 ! "Ssh command to execute" Set from: Default
