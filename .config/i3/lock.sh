@@ -4,7 +4,7 @@
 #sh /usr/local/bin/music.sh stop
 
 #font="System San Francisco Display"
-font="SFNS-Display"
+font="SFNS Display"
 
 frosted='#ffffff22'  # clear ish
 
