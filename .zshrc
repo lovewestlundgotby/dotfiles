@@ -1,6 +1,10 @@
 export PATH="$PATH:/usr/sbin"
 export EDITOR=vim
 
+if [ -f /etc/profile.d/vte.sh ]; then
+    source /etc/profile.d/vte.sh
+fi
+
 PROMPT='%F{196}%~ $ %f%F{gray}'
 RPROMPT='%T'
 
