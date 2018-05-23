@@ -82,3 +82,9 @@
 "" YouCompleteMe force compile {
     nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 "" }
+
+
+"" NERDTree {
+    map <silent> <C-n> :NERDTreeToggle<CR>
+"" }
+

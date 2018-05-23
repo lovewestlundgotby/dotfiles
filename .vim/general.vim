@@ -31,7 +31,7 @@
 
 
 "" Color scheme {
-    set t_Co=256
+    syntax enable           " Use syntax highlighting
     set background=dark
     let g:solarized_termcolors=256
     colorscheme solarized
@@ -80,6 +80,15 @@
 "" Line numbers {
     set relativenumber      " Line numbers are relative to current line
     set number              " Display actual number for current line
+"" }
+
+
+"" NERDTree {
+    " autocmd StdinReadPre * let s:std_in=1
+    " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+    let g:NERDTreeDirArrowExpandable = '▸'
+    let g:NERDTreeDirArrowCollapsible = '▿'
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 "" }
 
 
@@ -134,8 +143,8 @@
 
     filetype plugin indent on
             " Enable filetype and plugin indent
-    syntax enable           " Use syntax highlighting
-    hi Normal ctermbg=NONE  " Set transparent background, has to be after syntax enable
+    hi Normal ctermbg=NONE  " Set transparent background, has to be after
+                            " syntax enable and colorscheme
     set hidden              " Allow for hiding buffers without saving them
 
 

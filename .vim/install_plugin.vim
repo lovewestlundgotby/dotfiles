@@ -12,6 +12,12 @@ Plugin 'VundleVim/Vundle.vim'
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'nathanaelkane/vim-indent-guides'
     Plugin 'luochen1990/rainbow'
+    Plugin 'ryanoasis/vim-devicons'
+"" }
+
+"" File exploration {
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'Xuyuanp/nerdtree-git-plugin'
 "" }
 
 "" Snippets {
