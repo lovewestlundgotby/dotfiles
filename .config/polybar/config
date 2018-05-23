@@ -44,7 +44,7 @@ module-margin-left = 1
 module-margin-right = 2
 
 ; Normal text font
-font-0 = SFNS Display:style=Regular:size=11.7:antialias=true
+font-0 = SFNS Display:size=11.7:antialias=true
 ; Glyph font
 font-1 = Iosevka Nerd Font:style=Regular:size=12:antialias=true
 font-2 = fixed:pixelsize=10;1
@@ -150,7 +150,7 @@ interval = 25
 
 mount-0 = /
 
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %free%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
