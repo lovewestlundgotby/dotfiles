@@ -8,6 +8,8 @@ The dotfiles currently used on my laptop.
 * rofi
 * termite
 * vim
+* xinitrc
+* Xmodmap
 * zsh
 
 ## Dependencies
