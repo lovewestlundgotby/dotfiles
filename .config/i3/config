@@ -243,7 +243,7 @@ default_floating_border none
 #######################################################################
 
 smart_gaps on
-gaps inner 10
+gaps inner 5
 gaps outer 0
 
 #######################################################################
@@ -311,7 +311,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id compton --config ~/.config/compton/compton.conf -CGb
 
 # Always set wallpaper, to change, make a copy of another picture called 'wallpaper.png' or whatever
-exec_always feh --bg-scale /home/love/Pictures/wallpaper.*
+exec_always feh --bg-scale /home/love/pictures/wallpaper.*
 
 # Run Spotify on startup
 exec spotify
