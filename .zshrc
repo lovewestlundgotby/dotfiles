@@ -1,5 +1,6 @@
 export PATH="$PATH:/usr/sbin"
-export EDITOR=vim
+export EDITOR=nvim
+export VISUAL=nvim
 
 if [ -f /etc/profile.d/vte.sh ]; then
     source /etc/profile.d/vte.sh
