@@ -13,6 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
     Plugin 'nathanaelkane/vim-indent-guides'
     Plugin 'luochen1990/rainbow'
     Plugin 'ryanoasis/vim-devicons'
+    Plugin 'chrisduerr/vim-undead'
 "" }
 
 "" File exploration {
@@ -29,8 +30,6 @@ Plugin 'VundleVim/Vundle.vim'
 
 "" Auto completion {
     Plugin 'Valloric/YouCompleteMe'     " Auto complete engine
-    Plugin 'ervandew/supertab'
-    Plugin 'Quramy/tsuquyomi'           " TypeScript auto complete
     Plugin 'Raimondi/delimitMate'       " Auto complete paranthesis and similar
 "" }
 
@@ -41,6 +40,11 @@ Plugin 'VundleVim/Vundle.vim'
 
 "" Git {
     Plugin 'tpope/vim-fugitive'
+"" }
+
+"" Syntax {
+    Plugin 'vim-syntastic/syntastic'
+    Plugin 'Quramy/tsuquyomi'           " TypeScript syntax checker
 "" }
 
 call vundle#end()

@@ -25,6 +25,12 @@
 "imap <Leader>O Ö
 " }
 
+"" Use arrow keys to resize splits {
+    nnoremap <silent> <Up>    :resize +2<CR>
+    nnoremap <silent> <Down>    :resize -2<CR>
+    nnoremap <silent> <Left>    :vertical resize +2<CR>
+    nnoremap <silent> <Right> :vertical resize -2<CR>
+"" }
 
 "" <Space> to turn off search highlight {
     nmap <silent> <Space> :nohlsearch<Bar>:echo<CR>

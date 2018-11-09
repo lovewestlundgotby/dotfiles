@@ -37,26 +37,25 @@
 "" }
 
 ""  YouCompleteMe {
+    let g:ycm_autoclose_preview_window_after_completion = 1
     " Typescript completion
     if !exists("g:ycm_semantic_triggers")
         let g:ycm_semantic_triggers = {}
     endif
-    let g:ycm_semantic_triggers['typescript'] = ['.']
+    let g:ycm_python_binary_path = '/usr/bin/python3'
+    let g:ycm_server_python_interpreter = '/usr/bin/python3'
 "" }
 
 
 "" Ultisnips and some YouCompleteMe {
     " Make YCM compatible with UltiSnips (using supertab)
-    let g:ycm_key_list_select_completion    = ['<C-n>', '<Down>']
-    let g:ycm_key_list_previous_completion  = ['<C-p>', '<Up>']
-    let g:SuperTabDefaultCompletionType     = '<C-n>'
-    let g:SuperTabClosePreviewOnPopupClose  = 1
+    let g:ycm_key_list_select_completion    = ['<Tab>', '<Down>']
+    let g:ycm_key_list_previous_completion  = ['<S-Tab>', '<Up>']
 
     " Better key bindings for UltiSnipsExpandTrigger
-    let g:UltiSnipsExpandTrigger        = "<tab>"
-    let g:UltiSnipsJumpForwardTrigger   = "<tab>"
-    let g:UltiSnipsJumpBackwardTrigger  = "<s-tab>"
-    let g:UltisnipsJumpBackwardTrigger  = "<C-z>"
+    let g:UltiSnipsExpandTrigger        = "<C-e>"
+    let g:UltiSnipsJumpForwardTrigger   = "<C-j>"
+    let g:UltiSnipsJumpBackwardTrigger  = "<C-z>"
 "" }
 
 "" IndentGuides {
@@ -69,5 +68,16 @@
         autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=NONE ctermbg=NONE
         autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=DarkSlateGray ctermbg=235
     augroup END
+"" }
+
+"" Syntastic {
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0
 "" }
 
