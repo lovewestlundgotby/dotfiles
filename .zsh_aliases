@@ -1,8 +1,3 @@
-run() {
-    #perform a ./ by typing run followed by * to run
-    ./$1
-}
-alias run=run
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
