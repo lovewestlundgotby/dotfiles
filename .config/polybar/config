@@ -43,12 +43,12 @@ padding-right = 1
 module-margin-left = 1
 module-margin-right = 2
 
+dpi = 117
 ; Normal text font
-font-0 = SFNS Display:size=11.7:antialias=true
+font-0 = SFNS Display:pixelsize=10;2
 ; Glyph font
-font-1 = Iosevka Nerd Font:style=Regular:size=12:antialias=true
-font-2 = fixed:pixelsize=10;1
-font-3 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-1 = Iosevka Nerd Font:style=Regular:pixelsize=11;2
+;font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
 
 modules-left = i3 player-mpris-tail
 modules-center = date
