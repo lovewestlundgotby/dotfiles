@@ -207,35 +207,72 @@ bindsym $mod+r mode "resize"
 
 
 # Define colors
-set $bg-color               #2f343f
-set $inactive-bg-color      #2f343f
-set $text-color             #f3f4f5
-set $inactive-text-color    #676E7D
-set $urgent-bg-color        #E53935
-set $indicator-color        #b2b2b2
-set $focused-border-color   #2f343f
+set $gray1        #f3f4f5
+set $gray2        #676e7d
+set $gray3        #2f343f
+set $gray4        #2b2b2b
+set $gray5        #1e1e1e
+
+set $washedred    #e53935
+set $purple       #aa00aa
+set $magenta1     #cc0069
+set $magenta2     #a3019d
+set $magenta3     #70005b
+
+set $brightred    #ff0000
+set $brightgreen  #00ff00
+set $brightblue   #0000ff
+set $brightyellow #ffff00
+
+# Border
+set $border_focused   $gray3
+set $border_inactive  $brightred
+set $border_unfocused $brightgreen
+set $border_urgent    $washedred
+
+# Background
+set $bg_focused       $gray3
+set $bg_inactive      $gray3
+set $bg_unfocused     $brightblue
+set $bg_urgent        $washedred
+
+# Text
+set $text             $gray1
+set $text_inactive    $gray2
+set $text_urgent      $washedred
+
+# Indicator
+set $indicator_color        $gray2
+
+# Child border
+set $child_focused          $brightred
+set $child_inactive         $brightgreen
+set $child_unfocused        $brightblue
+set $child_urgent           $purple
 
 # Set window colors
-#                       Border              Background          Text                    Indicator
-client.focused          $bg-color           $bg-color           $text-color             $indicator-color
-client.unfocused        $inactive-bg-color  $inactive-bg-color  $inactive-text-color    $indicator-color
-client.focused_inactive $inactive-bg-color  $inactive-bg-color  $inactive-text-color    $indicator-color
-client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color             $indicator-color
+#                       Border                 Background         Text            Indicator        Child border
+client.focused          $border_focused        $bg_focused        $text           $indicator_color $gray2
+client.focused_inactive $border_inactive       $bg_inactive       $text_inactive  $indicator_color $gray3
+client.unfocused        $border_unfocused      $bg_unfocused      $text_inactive  $indicator_color $gray5
+client.urgent           $bg_urgent             $bg_urgent         $text           $indicator_color $chil_durgent
 
-default_border none
-default_floating_border none
+hide_edge_borders smart
+default_border pixel 1
+default_floating_border pixel 1
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
     colors {
-        background $bg-color
-        separator #757575
+        background $gray4
+        separator  #757575
         #                   Border                  Background          Text
-        focused_workspace   $focused-border-color   $bg-color           $text-color
-        inactive_workspace  $inactive-bg-color      $inactive-bg-color  $inactive-text-color
-        urgent_workspace    $urgent-bg-color        $urgent-bg-color    $text-color
+        focused_workspace   $magenta1               $magenta3           $text
+        active_workspace    $gray3                  $magenta3           $text
+        inactive_workspace  $gray3                  $gray5              $text_inactive
+        urgent_workspace    $border_urgent          $brightyellow       $text_urgent
     }
 }
 
