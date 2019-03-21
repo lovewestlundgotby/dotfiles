@@ -52,9 +52,9 @@
 "" Indentation {
     set expandtab           " Convert tabs to spaces
     set smarttab            " Go as far as the non empty character
-    set tabstop=4           " Number of spaces per tab character
+    set tabstop=8           " Number of spaces per tab character
+    set shiftwidth=4        " Number of spaces used for auto indentation
     set softtabstop=-1      " Number of spaces using <Tab> or <BS>
-    set shiftwidth=0        " Number of spaces used for auto indentation
     set shiftround          " Round < and > indents to a multiple of shiftwidth
     set autoindent
 "" }
