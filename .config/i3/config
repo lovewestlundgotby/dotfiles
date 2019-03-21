@@ -170,6 +170,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 for_window [class="Spotify"] move to workspace $ws10
 #for_window [class="MATLAB R2017a - academic use" title="Figure*"] floating enabled
 for_window [class="matplotlib"] floating enabled
+for_window [class="Yad"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
