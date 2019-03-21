@@ -365,6 +365,7 @@ exec spotify
 # intercepted to run the script '~/scripts/change_keyboard_layout.sh'
 # Clear options, unbind caps, and set ralt, Alt Gr, as the compose key
 exec_always setxkbmap -option && setxkbmap -option 'caps:none, compose:ralt'
+#exec_always setxkbmap -option && setxkbmap -layout us,se -option 'grp:caps_toggle, compose:ralt'
 
 # Start notification server dunst
 exec dunst
