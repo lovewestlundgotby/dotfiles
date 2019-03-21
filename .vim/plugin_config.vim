@@ -66,7 +66,7 @@
     augroup Group1
         autocmd!
         autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=NONE ctermbg=NONE
-        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=DarkSlateGray ctermbg=235
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#073642 ctermbg=235
     augroup END
 "" }
 
@@ -81,3 +81,7 @@
     let g:syntastic_check_on_wq = 0
 "" }
 
+"" NeoSolarized {
+    " Set to 1 to enable transparent background
+    let g:neosolarized_termtrans = 0
+"" }
