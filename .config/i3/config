@@ -356,7 +356,7 @@ exec libinput-gestures-setup start
 exec --no-startup-id compton --config ~/.config/compton/compton.conf -CGb
 
 # Always set wallpaper, to change, make a copy of another picture called 'wallpaper.png' or whatever
-exec_always feh --bg-scale /home/love/pictures/wallpaper.*
+exec_always feh --bg-fill /home/love/pictures/wallpaper.*
 
 # Run Spotify on startup
 exec spotify
