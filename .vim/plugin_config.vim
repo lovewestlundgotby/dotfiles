@@ -70,6 +70,10 @@
     augroup END
 "" }
 
+"" ALE Asynchronous Lint Engine {
+    "let g:ale_set_balloons = 1
+"" }
+
 "" Syntastic {
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
