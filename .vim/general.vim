@@ -149,7 +149,7 @@
 
     filetype plugin indent on
             " Enable filetype and plugin indent
-    hi Normal ctermbg=NONE  " Set transparent background, has to be after
+    "hi Normal ctermbg=NONE  " Set transparent background, has to be after
                             " syntax enable and colorscheme
     set hidden              " Allow for hiding buffers without saving them
 
