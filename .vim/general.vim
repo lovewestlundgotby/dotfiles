@@ -31,10 +31,12 @@
 
 
 "" Color scheme {
+    set termguicolors
     syntax enable           " Use syntax highlighting
     set background=dark
-    let g:solarized_termcolors=256
-    colorscheme solarized
+    "let g:solarized_termcolors=256
+    "colorscheme solarized
+    colorscheme NeoSolarized
 "" }
 
 
