@@ -13,7 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
     Plugin 'nathanaelkane/vim-indent-guides'
     Plugin 'luochen1990/rainbow'
     Plugin 'ryanoasis/vim-devicons'
-    Plugin 'chrisduerr/vim-undead'
+    Plugin 'iCyMind/NeoSolarized'
 "" }
 
 "" File exploration {
@@ -40,11 +40,17 @@ Plugin 'VundleVim/Vundle.vim'
 
 "" Git {
     Plugin 'tpope/vim-fugitive'
+    Plugin 'airblade/vim-gitgutter'
 "" }
 
 "" Syntax {
-    Plugin 'vim-syntastic/syntastic'
+    Plugin 'w0rp/ale'
     Plugin 'Quramy/tsuquyomi'           " TypeScript syntax checker
+"" }
+
+"" Markdown {
+    " Install by ':call mkdp#util#install()'
+    Plugin 'iamcco/markdown-preview.nvim'
 "" }
 
 call vundle#end()
