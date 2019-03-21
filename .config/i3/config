@@ -288,6 +288,9 @@ gaps outer 0
 #                            Custom binds                             #
 #######################################################################
 
+# Open a floating window with python in it
+bindsym $mod+p exec alacritty -e sh ~/scripts/float_exec_python.sh
+
 bindsym $mod+shift+x exec betterlockscreen --lock
 
 ####################
