@@ -81,6 +81,12 @@
 
 "" ALE Asynchronous Lint Engine {
     "let g:ale_set_balloons = 1
+    let g:ale_linters = {
+            \'python': ['flake8'],
+            \}
+    let g:ale_fixers = {
+            \'python': ['black'],
+            \}
 "" }
 
 "" Syntastic {
