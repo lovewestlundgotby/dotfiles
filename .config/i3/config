@@ -39,7 +39,7 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec WINIT_HIDPI_FACTOR=1 alacritty
 
 # start a browser
 bindsym $mod+Shift+Return exec opera
@@ -290,7 +290,7 @@ gaps outer 0
 #######################################################################
 
 # Open a floating window with python in it
-bindsym $mod+p exec alacritty -e sh ~/scripts/float_exec_python.sh
+bindsym $mod+p exec WINIT_HIDPI_FACTOR=1 alacritty -d 120 80 -e sh ~/scripts/float_exec_python.sh
 
 bindsym $mod+shift+x exec betterlockscreen --lock
 
