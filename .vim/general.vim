@@ -23,7 +23,7 @@
         au WinLeave * setlocal nocursorline
     augroup END
     "set cursorline
-    hi CursorLine ctermbg=240
+    "hi CursorLine ctermbg=240
             " Set background color of current line
 
     set colorcolumn=80      " Show 80th column
@@ -36,7 +36,7 @@
     set background=dark
     "let g:solarized_termcolors=256
     "colorscheme solarized
-    colorscheme NeoSolarized
+    colorscheme love
 "" }
 
 

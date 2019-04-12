@@ -11,16 +11,17 @@
 
     let g:airline#extensions#branch#enabled = 1
 
-    let g:airline_theme='solarized'
+    let g:airline_theme='lucius'
     let g:airline#extensions#ycm#enabled = 1
     let g:airline#extensions#ycm#error_symbol = 'E:'
     let g:airline#extensions#ycm#warning_symbol = 'W:'
 "" }
 
+
 "" Rainbow Paranthesis {
     let g:rainbow_active = 1
     let g:rainbow_conf = {
-	\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+	\	'guifgs': ['royalblue1', 'darkorange3', 'seagreen3', 'firebrick'],
 	\	'ctermfgs': ['32', '208', '34', '196'],
 	\	'operators': '_,_',
 	\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
@@ -75,7 +76,7 @@
     augroup Group1
         autocmd!
         autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=NONE ctermbg=NONE
-        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#073642 ctermbg=235
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#252525 ctermbg=235 " #073642 ctermbg=235
     augroup END
 "" }
 
