@@ -1,12 +1,11 @@
+# The fuck program alias
+eval $(thefuck --alias)
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias mkdir='mkdir -pv'
 
 alias sudo='nocorrect sudo'
-
-# display core temps
-alias temps='sensors'
 
 ##########
 # pacman #
@@ -58,14 +57,14 @@ alias l='ls -lFhp'
 alias lr='ls -R'
 
 # git aliases
-alias gstat='git status'
-alias gpull='git pull'
-alias gadd='git add'
-alias gaddp='git add -p'
-alias gcom='git commit'
-alias gcomm='git commit -m'
-alias gcomp='git commit -p'
-alias gpush='git push'
+# alias gstat='git status'
+# alias gpull='git pull'
+# alias gadd='git add'
+# alias gaddp='git add -p'
+# alias gcom='git commit'
+# alias gcomm='git commit -m'
+# alias gcomp='git commit -p'
+# alias gpush='git push'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
