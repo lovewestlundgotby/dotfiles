@@ -37,6 +37,7 @@
 	\}
 "" }
 
+
 ""  YouCompleteMe {
     let g:ycm_autoclose_preview_window_after_completion = 1
     " Typescript completion
@@ -68,6 +69,7 @@
     let g:UltiSnipsJumpBackwardTrigger  = "<C-z>"
 "" }
 
+
 "" IndentGuides {
     let g:indent_guides_enable_on_vim_startup = 1
     let g:indent_guides_guide_size = 4
@@ -79,6 +81,7 @@
         autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#252525 ctermbg=235 " #073642 ctermbg=235
     augroup END
 "" }
+
 
 "" ALE Asynchronous Lint Engine {
     "let g:ale_set_balloons = 1
