@@ -1,11 +1,6 @@
 "" Set leader key and configure leader mappings {
-    let mapleader = "\\"
-
-    " Open a new empty buffer
-    nmap <leader> e :enew<CR>
-
     " Close current buffer and move to previous one
-    nmap <leader>bq :bp <BAR> bd #<CR>
+    nmap <silent> <leader>bq :bp <BAR> bd #<CR>
 
     nmap <leader>1 <Plug>AirlineSelectTab1
     nmap <leader>2 <Plug>AirlineSelectTab2
@@ -81,12 +76,17 @@
 
 
 "" Insert empty lines without insert mode {
-    nnoremap t o<ESC>k
-    nnoremap T O<ESC>j
+    nnoremap t o<ESC>cc<ESC>k
+    nnoremap T O<ESC>cc<ESC>j
 "" }
 
-"" YouCompleteMe force compile {
+"" YouCompleteMe {
     nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+    nnoremap <leader>fi :YcmCompleter FixIt<CR>
+    nnoremap <leader>gg :YcmCompleter GoTo<CR>
+    nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
+    nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+    nnoremap <leader>gt :YcmCompleter GetType<CR>
 "" }
 
 
@@ -94,3 +94,14 @@
     map <silent> <C-n> :NERDTreeToggle<CR>
 "" }
 
+"" clang-format {
+    nmap <C-c> :call ClangFormatCpp()<CR>
+
+    vmap <C-c> :pyfile /usr/share/vim/addons/syntax/clang-format.py<CR>
+"" }
+
+"" Fzy find {
+    nnoremap <silent> <leader>e :call FzyCommand("rg --no-messages --files", ":e ")<CR>
+    nnoremap <silent> <leader>v :call FzyCommand("rg --no-messages --files", ":vs ")<CR>
+    nnoremap <silent> <leader>s :call FzyCommand("rg --no-messages --files", ":sp ")<CR>
+"" }

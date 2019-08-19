@@ -2,7 +2,7 @@
     " Enable the list of buffers
     let g:airline#extensions#tabline#enabled = 1
     " Show just the filename in the buffer line
-    let g:airline#extensions#tabline#fnamemod = ':t'
+    let g:airline#extensions#tabline#fnamemod = ':.'
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#left_sep = ''
     let g:airline#extensions#tabline#left_alt_sep = ''
@@ -11,6 +11,8 @@
 
     let g:airline#extensions#branch#enabled = 1
 
+    let g:airline#extensions#ale#enabled = 1
+
     let g:airline_theme='lucius'
     let g:airline#extensions#ycm#enabled = 1
     let g:airline#extensions#ycm#error_symbol = 'E:'
@@ -18,7 +20,7 @@
 "" }
 
 
-"" Rainbow Paranthesis {
+"" Rainbow Parantheses {
     let g:rainbow_active = 1
     let g:rainbow_conf = {
 	\	'guifgs': ['royalblue1', 'darkorange3', 'seagreen3', 'firebrick'],
@@ -27,6 +29,7 @@
 	\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
 	\	'separately': {
 	\		'*': {},
+        \               'cmake': 0,
 	\		'tex': {
 	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
 	\		},
@@ -86,15 +89,35 @@
 "" ALE Asynchronous Lint Engine {
     "let g:ale_set_balloons = 1
     let g:ale_linters = {
+            \'cpp': ['gcc'],
             \'python': ['flake8'],
             \}
     let g:ale_fixers = {
-            \'python': ['black'],
-            \}
+    \   'cpp': ['clang-format'],
+    \   'python': ['black'],
+    \}
+
+    let g:ale_c_parse_compile_commands=1
+    let g:ale_linters_explicit=1
+    let g:ale_echo_msg_format='%linter%: %code: %%s'
+"" }
+
+
+"" MarkdownPreview {
+    let g:mkdp_browser = 'brave-browser'
+    let g:mkdp_auto_close = 0
 "" }
 
 
 "" NeoSolarized {
     " Set to 1 to enable transparent background
     let g:neosolarized_termtrans = 0
+"" }
+
+"" vim-commentary {
+    augroup VimCommentary
+        autocmd!
+        autocmd FileType cmake setlocal commentstring=\#\ %s
+        autocmd FileType cpp setlocal commentstring=//\ %s
+    augroup END
 "" }

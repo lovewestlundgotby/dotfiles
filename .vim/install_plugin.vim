@@ -34,8 +34,7 @@ Plugin 'VundleVim/Vundle.vim'
 "" }
 
 "" Syntax highlighting {
-    Plugin 'leafgarland/typescript-vim'     " TypeScript
-    Plugin 'HerringtonDarkholme/yats.vim'
+    Plugin 'sheerun/vim-polyglot'       " A lot of languages
 "" }
 
 "" Git {
@@ -53,5 +52,10 @@ Plugin 'VundleVim/Vundle.vim'
     Plugin 'iamcco/markdown-preview.nvim'
 "" }
 
+"" Miscellanious {
+  Plugin 'machakann/vim-sandwich'       " Handle surroundings like parentheses, quotes, etc
+  Plugin 'tpope/vim-commentary'         " Fast comments
+  Plugin 'sakhnik/nvim-gdb'             " Debug C/C++ with gdb in vim
+"" }
 call vundle#end()
 
