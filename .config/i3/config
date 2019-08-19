@@ -42,7 +42,7 @@ floating_modifier $mod
 bindsym $mod+Return exec WINIT_HIDPI_FACTOR=1 alacritty
 
 # start a browser
-bindsym $mod+Shift+Return exec opera
+bindsym $mod+Shift+Return exec brave-browser
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -226,37 +226,38 @@ set $brightblue   #0000ff
 set $brightyellow #ffff00
 
 # Border
-set $border_focused   $gray3
-set $border_inactive  $brightred
-set $border_unfocused $brightgreen
-set $border_urgent    $washedred
+set $border_focused   #676e7d
+set $border_inactive  #2f343f
+set $border_unfocused #2b2b2b
+set $border_urgent    #e53935
 
 # Background
-set $bg_focused       $gray3
-set $bg_inactive      $gray3
-set $bg_unfocused     $brightblue
-set $bg_urgent        $washedred
+set $bg_focused       #2f343f
+set $bg_inactive      #2f343f
+set $bg_unfocused     #2b2b2b
+set $bg_urgent        #e53935
 
 # Text
-set $text             $gray1
-set $text_inactive    $gray2
-set $text_urgent      $washedred
+set $text             #f1f2f3
+set $text_inactive    #676e7d
+set $text_urgent      #e53935
 
 # Indicator
-set $indicator_color        $gray2
+set $indicator_color        #676e7d
 
 # Child border
-set $child_focused          $brightred
-set $child_inactive         $brightgreen
-set $child_unfocused        $brightblue
-set $child_urgent           $purple
+set $child_focused          #ff0000
+set $child_inactive         #00ff00
+set $child_unfocused        #0000ff
+set $child_urgent           #aa00aa
 
 # Set window colors
 #                       Border                 Background         Text            Indicator        Child border
 client.focused          $border_focused        $bg_focused        $text           $indicator_color $gray2
 client.focused_inactive $border_inactive       $bg_inactive       $text_inactive  $indicator_color $gray3
 client.unfocused        $border_unfocused      $bg_unfocused      $text_inactive  $indicator_color $gray5
-client.urgent           $bg_urgent             $bg_urgent         $text           $indicator_color $chil_durgent
+client.urgent           $bg_urgent             $bg_urgent         $text           $indicator_color $child_urgent
+client.background       #ffffff
 
 hide_edge_borders smart
 default_border pixel 1
@@ -272,8 +273,8 @@ bar {
         #                   Border                  Background          Text
         focused_workspace   $magenta1               $magenta3           $text
         active_workspace    $gray3                  $magenta3           $text
-        inactive_workspace  $gray3                  $gray5              $text_inactive
-        urgent_workspace    $border_urgent          $brightyellow       $text_urgent
+        inactive_workspace  $gray3                  $gray4              $text_inactive
+        urgent_workspace    $border_urgent          $gray4              $text_urgent
     }
 }
 
@@ -282,7 +283,7 @@ bar {
 #######################################################################
 
 smart_gaps on
-gaps inner 5
+gaps inner 6
 gaps outer 0
 
 #######################################################################
@@ -292,7 +293,9 @@ gaps outer 0
 # Open a floating window with python in it
 bindsym $mod+p exec WINIT_HIDPI_FACTOR=1 alacritty -d 120 80 -e sh ~/scripts/float_exec_python.sh
 
-bindsym $mod+shift+x exec betterlockscreen --lock
+bindsym $mod+Shift+x exec betterlockscreen --lock
+
+bindsym $mod+Shift+o exec --no-startup-id ~/scripts/toggle_display_output.sh
 
 ####################
 #  Media keybinds  #
@@ -357,7 +360,7 @@ exec libinput-gestures-setup start
 exec --no-startup-id compton --config ~/.config/compton/compton.conf -CGb
 
 # Always set wallpaper, to change, make a copy of another picture called 'wallpaper.png' or whatever
-exec_always feh --bg-fill /home/love/pictures/wallpaper.*
+exec_always feh --no-xinerama --bg-fill /home/love/Pictures/wallpaper.*
 
 # Run Spotify on startup
 exec spotify
@@ -365,7 +368,7 @@ exec spotify
 # Setting caps to 'none' makes it genereate 'VoidSymbol' on press which is
 # intercepted to run the script '~/scripts/change_keyboard_layout.sh'
 # Clear options, unbind caps, and set ralt, Alt Gr, as the compose key
-exec_always setxkbmap -option && setxkbmap -option 'caps:none, compose:ralt'
+exec_always setxkbmap us -option && setxkbmap -option 'caps:none'
 #exec_always setxkbmap -option && setxkbmap -layout us,se -option 'grp:caps_toggle, compose:ralt'
 
 # Start notification server dunst
@@ -379,4 +382,3 @@ exec xgamma -gamma 1.15
 
 # Start Network Manager Applet nm-applet
 exec nm-applet
-
