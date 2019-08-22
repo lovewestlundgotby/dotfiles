@@ -83,7 +83,7 @@
 "" YouCompleteMe {
     nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
     nnoremap <leader>fi :YcmCompleter FixIt<CR>
-    nnoremap <leader>gg :YcmCompleter GoTo<CR>
+    nnoremap <leader>go :YcmCompleter GoTo<CR>
     nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
     nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
     nnoremap <leader>gt :YcmCompleter GetType<CR>
