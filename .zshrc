@@ -64,7 +64,8 @@ ZSH_THEME="love"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+# TODO: Look into git-prompt and see if it can be made faster.
+plugins=(git git-prompt)
 
 source $ZSH/oh-my-zsh.sh
 
