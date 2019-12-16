@@ -42,7 +42,7 @@ floating_modifier $mod
 bindsym $mod+Return exec WINIT_HIDPI_FACTOR=1 alacritty
 
 # start a browser
-bindsym $mod+Shift+Return exec brave-browser
+bindsym $mod+Shift+Return exec firefox
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -50,6 +50,8 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher) -- replaced with rofi
 # to change visuals, see .config/rofi/config
 bindsym $mod+d exec rofi -show combi
+# Open rofi in ssh mode
+bindsym $mod+Shift+s exec rofi -show ssh
 # open a locator using rofi
 bindsym $mod+Shift+f exec ~/scripts/rofi_scripts/rofi_locate.sh
 # There also is the (new) i3-dmenu-desktop which only displays applications
