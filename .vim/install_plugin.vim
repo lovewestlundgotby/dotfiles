@@ -17,8 +17,6 @@ Plugin 'VundleVim/Vundle.vim'
 "" }
 
 "" File exploration {
-    Plugin 'scrooloose/nerdtree'
-    Plugin 'Xuyuanp/nerdtree-git-plugin'
 "" }
 
 "" Snippets {

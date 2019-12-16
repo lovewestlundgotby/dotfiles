@@ -89,11 +89,6 @@
     nnoremap <leader>gt :YcmCompleter GetType<CR>
 "" }
 
-
-"" NERDTree {
-    map <silent> <C-n> :NERDTreeToggle<CR>
-"" }
-
 "" clang-format {
     nmap <C-c> :call ClangFormatCpp()<CR>
 
