@@ -53,7 +53,7 @@ fi
 # some more ls aliases
 alias ll='ls -AlFhp'
 alias la='ls -Ahp'
-alias l='ls -lFhp'
+alias l='ls -gGFhp'
 alias lr='ls -R'
 
 # git aliases
