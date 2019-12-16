@@ -76,8 +76,8 @@
 
 
 "" Insert empty lines without insert mode {
-    nnoremap t o<ESC>cc<ESC>k
-    nnoremap T O<ESC>cc<ESC>j
+    nnoremap t o<ESC>k
+    nnoremap T O<ESC>j
 "" }
 
 "" YouCompleteMe {
