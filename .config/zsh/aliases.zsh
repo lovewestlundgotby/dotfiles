@@ -1,9 +1,9 @@
-# The fuck program alias
-eval $(thefuck --alias)
-
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias mkdir='mkdir -pv'
+alias cp='cp -i'
+alias df='df --human-readable'                                                # Human-readable sizes
+alias free='free --human'                                            # Show sizes in MB
 
 alias sudo='nocorrect sudo'
 
