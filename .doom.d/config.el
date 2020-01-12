@@ -13,3 +13,5 @@
 ;; Press ctrl+alt+tab to format region with clang-format
 (load "/usr/share/clang/clang-format.el")
 (global-set-key [C-M-tab] 'clang-format-region)
+
+(setq c-default-style "bsd")
