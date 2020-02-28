@@ -1,209 +1,179 @@
-## Options section
-setopt correct                                                  # Auto correct mistakes
-setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
-setopt nocaseglob                                               # Case insensitive globbing
-setopt rcexpandparam                                            # Array expension with parameters
-setopt nocheckjobs                                              # Don't warn about running processes when exiting
-setopt numericglobsort                                          # Sort filenames numerically when it makes sense
-setopt nobeep                                                   # No beep
-setopt appendhistory                                            # Immediately append history instead of overwriting
-setopt histignorealldups                                        # If a new command is a duplicate, remove the older one
-setopt autocd                                                   # if only directory path is entered, cd there.
+# The following lines were added by compinstall
 
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
+zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*:options' list-colors '=^(-- *)=33'
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'l:|=* r:|=*'
+zstyle ':completion:*' max-errors 3
+zstyle ':completion:*' menu select=3
 zstyle ':completion:*' rehash true                              # automatically find new executables in path
-# Speed up completions
-zstyle ':completion:*' accept-exact '*(N)'
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
-HISTFILE=~/.zhistory
-HISTSIZE=1000
-SAVEHIST=500
-#export EDITOR=/usr/bin/nano
-export VISUAL=/usr/bin/nvim
-WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
-ZSH=~/.config/zsh
+zstyle ':completion:*' preserve-prefix '//[^/]##/'
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+zstyle ':completion:*' use-compctl false
+zstyle :compinstall filename '/home/love/.zshrc'
 
+export LESS_TERMCAP_mb=$(tput blink; tput setaf 22) # Start blink.
+export LESS_TERMCAP_md=$(tput bold; tput setaf 38) # Start bold.
+export LESS_TERMCAP_me=$(tput sgr0) # Stop blink, bold, underline.
+export LESS_TERMCAP_so=$(tput bold; tput setaf 7; tput setab 24) # Start standout.
+export LESS_TERMCAP_se=$(tput rmso; tput sgr0) # Stop standout.
+export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7) # Start underline.
+export LESS_TERMCAP_ue=$(tput rmul; tput sgr0) # Stop underline.
+export LESS_TERMCAP_mr=$(tput rev) # Start reverse.
+export LESS_TERMCAP_mh=$(tput dim) # Start half bright.
+export LESS_TERMCAP_ZN=$(tput ssubm)
+export LESS_TERMCAP_ZV=$(tput rsubm)
+export LESS_TERMCAP_ZO=$(tput ssupm)
+export LESS_TERMCAP_ZW=$(tput rsupm)
+export GROFF_NO_SGR=1         # For Konsole and Gnome-terminal
+export LESS=--RAW-CONTROL-CHARS
 
-## Keybindings section
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=2400
+SAVEHIST=2000
+setopt autocd
+setopt histignorealldups
+setopt histignorespace
+setopt incappendhistory
 bindkey -e
-bindkey '^[[7~' beginning-of-line                               # Home key
-bindkey '^[[H' beginning-of-line                                # Home key
-if [[ "${terminfo[khome]}" != "" ]]; then
-  bindkey "${terminfo[khome]}" beginning-of-line                # [Home] - Go to beginning of line
-fi
-bindkey '^[[8~' end-of-line                                     # End key
-bindkey '^[[F' end-of-line                                     # End key
-if [[ "${terminfo[kend]}" != "" ]]; then
-  bindkey "${terminfo[kend]}" end-of-line                       # [End] - Go to end of line
-fi
-bindkey '^[[2~' overwrite-mode                                  # Insert key
-bindkey '^[[3~' delete-char                                     # Delete key
-bindkey '^[[C'  forward-char                                    # Right key
-bindkey '^[[D'  backward-char                                   # Left key
-bindkey '^[[5~' history-beginning-search-backward               # Page up key
-bindkey '^[[6~' history-beginning-search-forward                # Page down key
+# End of lines configured by zsh-newuser-install
 
-# Navigate words with ctrl+arrow keys
-bindkey '^[Oc' forward-word                                     #
-bindkey '^[Od' backward-word                                    #
-bindkey '^[[1;5D' backward-word                                 #
-bindkey '^[[1;5C' forward-word                                  #
-bindkey '^H' backward-kill-word                                 # delete previous word with ctrl+backspace
-bindkey '^[[Z' undo                                             # Shift+tab undo last action
+export VISUAL=/usr/bin/nvim
 
-## Alias section
-ALIASES_FILE=$ZSH/aliases.zsh
-if [[ -f $ALIASES_FILE ]]; then
-  source $ALIASES_FILE
-fi
+# Source additional configuration and functions
+source ~/.config/zsh/aliases.zsh
+source ~/.config/zsh/abbreviations.zsh
+source ~/.config/zsh/zsh-fzy.plugin.zsh
 
-## Abbreviation section
-ABBREVIATION_FILE=$ZSH/abbreviations.zsh
-if [[ -f $ABBREVIATION_FILE ]]; then
-  source $ABBREVIATION_FILE
-fi
-
-## Rationalize dot in path expansion
-RATIONALIZE_DOT_FILE=$ZSH/functions/rationalize-dot.zsh
-if [[ -f $RATIONALIZE_DOT_FILE ]]; then
-  source $RATIONALIZE_DOT_FILE
-fi
-
-# Theming section
-autoload -U compinit colors zcalc
-compinit -d
-colors
-
-# enable substitution for prompt
-setopt prompt_subst
-
-# Prompt (on left side) similar to default bash prompt, or redhat zsh prompt with colors
- #PROMPT="%(!.%{$fg[red]%}[%n@%m %1~]%{$reset_color%}# .%{$fg[green]%}[%n@%m %1~]%{$reset_color%}$ "
-# Maia prompt
-PROMPT="%B%{$fg[cyan]%}%(4~|%-1~/.../%2~|%~)%u%b >%{$fg[cyan]%}>%B%(?.%{$fg[cyan]%}.%{$fg[red]%})>%{$reset_color%}%b " # Print some system information when the shell is first started
-# Print a greeting message when shell is started
-# echo $USER@$HOST  $(uname -srm) $(lsb_release -rcs)
-## Prompt on right side:
-#  - shows status of git when in git repository (code adapted from https://techanic.net/2012/12/30/my_git_prompt_for_zsh.html)
-#  - shows exit status of previous command (if previous command finished with an error)
-#  - is invisible, if neither is the case
-
-# Modify the colors and symbols in these variables as desired.
-GIT_PROMPT_SYMBOL="%{$fg[blue]%}±"                              # plus/minus     - clean repo
-GIT_PROMPT_PREFIX="%{$fg[green]%}[%{$reset_color%}"
-GIT_PROMPT_SUFFIX="%{$fg[green]%}]%{$reset_color%}"
-GIT_PROMPT_AHEAD="%{$fg[red]%}ANUM%{$reset_color%}"             # A"NUM"         - ahead by "NUM" commits
-GIT_PROMPT_BEHIND="%{$fg[cyan]%}BNUM%{$reset_color%}"           # B"NUM"         - behind by "NUM" commits
-GIT_PROMPT_MERGING="%{$fg_bold[magenta]%}⚡︎%{$reset_color%}"    # lightning bolt - merge conflict
-GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%}●%{$reset_color%}"       # red circle     - untracked files
-GIT_PROMPT_MODIFIED="%{$fg_bold[yellow]%}●%{$reset_color%}"     # yellow circle  - tracked files modified
-GIT_PROMPT_STAGED="%{$fg_bold[green]%}●%{$reset_color%}"        # green circle   - staged changes present = ready for "git push"
-
-parse_git_branch() {
-  # Show Git branch/tag, or name-rev if on detached head
-  ( git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD ) 2> /dev/null
-}
-
-parse_git_state() {
-  # Show different symbols as appropriate for various Git repository states
-  # Compose this value via multiple conditional appends.
-  local GIT_STATE=""
-  local NUM_AHEAD="$(git log --oneline @{u}.. 2> /dev/null | wc -l | tr -d ' ')"
-  if [ "$NUM_AHEAD" -gt 0 ]; then
-    GIT_STATE=$GIT_STATE${GIT_PROMPT_AHEAD//NUM/$NUM_AHEAD}
-  fi
-  local NUM_BEHIND="$(git log --oneline ..@{u} 2> /dev/null | wc -l | tr -d ' ')"
-  if [ "$NUM_BEHIND" -gt 0 ]; then
-    GIT_STATE=$GIT_STATE${GIT_PROMPT_BEHIND//NUM/$NUM_BEHIND}
-  fi
-  local GIT_DIR="$(git rev-parse --git-dir 2> /dev/null)"
-  if [ -n $GIT_DIR ] && test -r $GIT_DIR/MERGE_HEAD; then
-    GIT_STATE=$GIT_STATE$GIT_PROMPT_MERGING
-  fi
-  if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
-    GIT_STATE=$GIT_STATE$GIT_PROMPT_UNTRACKED
-  fi
-  if ! git diff --quiet 2> /dev/null; then
-    GIT_STATE=$GIT_STATE$GIT_PROMPT_MODIFIED
-  fi
-  if ! git diff --cached --quiet 2> /dev/null; then
-    GIT_STATE=$GIT_STATE$GIT_PROMPT_STAGED
-  fi
-  if [[ -n $GIT_STATE ]]; then
-    echo "$GIT_PROMPT_PREFIX$GIT_STATE$GIT_PROMPT_SUFFIX"
-  fi
-}
-
-git_prompt_string() {
-  local git_where="$(parse_git_branch)"
- 
-  # If inside a Git repository, print its branch and state
-  [ -n "$git_where" ] && echo "$GIT_PROMPT_SYMBOL$(parse_git_state)$GIT_PROMPT_PREFIX%{$fg[yellow]%}${git_where#(refs/heads/|tags/)}$GIT_PROMPT_SUFFIX"
-
-  # If not inside the Git repo, print exit codes of last command (only if it failed)
-  [ ! -n "$git_where" ] && echo "%{$fg[red]%} %(?..[%?])"
-}
-
-# Right prompt with exit status of previous command if not successful
- #RPROMPT="%{$fg[red]%} %(?..[%?])" 
-# Right prompt with exit status of previous command marked with ✓ or ✗
- #RPROMPT="%(?.%{$fg[green]%}✓ %{$reset_color%}.%{$fg[red]%}✗ %{$reset_color%})"
-
-
-# Color man pages
-export LESS_TERMCAP_mb=$'\E[01;32m'
-export LESS_TERMCAP_md=$'\E[01;32m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;47;34m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;36m'
-export LESS=-r
-
-
-## Plugins section: Enable fish style features
 # Use syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# Use history substring search
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-# bind UP and DOWN arrow keys to history substring search
-zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='fg=#00ff00,bold'
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='fg=#ff0000,bold'
 
-# Apply different settigns for different terminals
-case $(basename "$(cat "/proc/$PPID/comm")") in
-  login)
-    RPROMPT="%{$fg[red]%} %(?..[%?])"
-    alias x='startx ~/.xinitrc'      # Type name of desired desktop after x, xinitrc is configured for it
-    ;;
-#  'tmux: server')
-#    RPROMPT='$(git_prompt_string)'
-#    ## Base16 Shell color themes.
-#    #possible themes: 3024, apathy, ashes, atelierdune, atelierforest, atelierhearth,
-#    #atelierseaside, bespin, brewer, chalk, codeschool, colors, default, eighties,
-#    #embers, flat, google, grayscale, greenscreen, harmonic16, isotope, londontube,
-#    #marrakesh, mocha, monokai, ocean, paraiso, pop (dark only), railscasts, shapesifter,
-#    #solarized, summerfruit, tomorrow, twilight
-#    #theme="eighties"
-#    #Possible variants: dark and light
-#    #shade="dark"
-#    #BASE16_SHELL="/usr/share/zsh/scripts/base16-shell/base16-$theme.$shade.sh"
-#    #[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
-#    # Use autosuggestion
-#    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-#    ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-#    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
-#    ;;
-  *)
-    RPROMPT='$(git_prompt_string)'
-    # Use autosuggestion
-    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-    ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
-    ;;
-esac
+WORDCHARS=${WORDCHARS//[\/.]/}                # Don't consider certain characters part of the word.
+
+bindkey '^[[H' beginning-of-line              # Home key.
+bindkey '^[[F' end-of-line                    # End key.
+bindkey '^[[3~' delete-char                   # Delete key.
+
+bindkey '^[[A' history-substring-search-up    # Arrow up searches upwards in history by substring.
+bindkey '^[[B' history-substring-search-down  # Arrow down searches downwards in history by substring.
+bindkey '^[[1;5D' backward-word               # ctrl+left arrow.
+bindkey '^[[1;5C' forward-word                # ctrl+right arrow.
+bindkey '^[[Z' undo                           # Shift+tab undo last action.
+bindkey '^R' fzy-history-widget               # Ctrl+r performs a fuzzy history search.
+
+BLACK="{black}"
+GREEN="{34}"
+LIMEGREEN="{107}"
+CYAN="{38}"
+RED="{160}"
+YELLOW="{178}"
+ORANGE="{202}"
+GRAY="{237}"
+
+FG_BLACK="%F${BLACK}"
+FG_GREEN="%F${GREEN}"
+FG_LIMEGREEN="%F${LIMEGREEN}"
+FG_CYAN="%F${CYAN}"
+FG_RED="%F${RED}"
+FG_YELLOW="%F${YELLOW}"
+FG_ORANGE="%F${ORANGE}"
+FG_GRAY="%F${GRAY}"
+
+BG_BLACK="%K${BLACK}"
+BG_GREEN="%K${GREEN}"
+BG_LIMEGREEN="%K${LIMEGREEN}"
+BG_CYAN="%K${CYAN}"
+BG_RED="%K${RED}"
+BG_YELLOW="%K${YELLOW}"
+BG_ORANGE="%K${ORANGE}"
+BG_GRAY="%K${GRAY}"
+
+RBLOCKARROW="" # \ue0b0
+RANGLE="❯" # \u276f
+ARROW_UP="↑" # \u2191
+ARROW_DOWN="↓" # \u2193
+PLUSMINUS="±" # \u00b1
+BRANCH="" # \uf020
+BRANCH2="" # \ue0a0
+DETACHED="➦" # \u27a6
+CROSS="✘" # \u2718
+LIGHTNING="⚡" # \u26a1
+GEAR="⚙" # \u2699
+BULLET_SMALL="•" # \u2022
+BULLET_LARGE="●"
+PLUS="➕" # \u2795
+PLUS2="✚" # \u271a
+FLAME="" # \uf490
+
+FORMAT_VCS="${FG_CYAN}%r/%S❯${FG_YELLOW} %b%c%u%f"
+FORMAT_VCS_ACTION="${FG_ORANGE}%a%m%f"
+FORMAT_VCS_END="${FG_YELLOW}❯%f"
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' patch-format "%n/%a"
+zstyle ':vcs_info:*' actionformats "${FORMAT_VCS} ${FORMAT_VCS_ACTION}${FORMAT_VCS_END}"
+zstyle ':vcs_info:*' formats "${FORMAT_VCS}${FORMAT_VCS_END}"
+zstyle ':vcs_info:*' nvcsformats "${FG_CYAN}%~%f"
+zstyle ':vcs_info:git*+set-message:*' hooks git-status
+
++vi-git-status() {
+    local NUM_STAGED=$(git diff --staged 2> /dev/null | wc -l)
+    if [[ $NUM_STAGED -gt 0 ]]; then
+        hook_com[staged]=" ${FG_GREEN}●%f"
+    fi
+
+    local REPO_DIR=$(git rev-parse --show-toplevel 2> /dev/null)
+    hook_com[unstaged]=""
+    local NUM_UNSTAGED=$(git ls-files $REPO_DIR --modified --exclude-standard 2> /dev/null | wc -l)
+    if [[ $NUM_UNSTAGED -gt 0 ]]; then
+        if [[ $NUM_STAGED -eq 0 ]]; then
+            hook_com[unstaged]+=" "
+        fi
+        hook_com[unstaged]+="${FG_YELLOW}●%f"
+    fi
+
+    local NUM_UNTRACKED=$(git ls-files $REPO_DIR --other --exclude-standard 2> /dev/null | wc -l)
+    if [[ $NUM_UNTRACKED -gt 0 ]]; then
+        if [[ $NUM_STAGED -eq 0 && $NUM_UNSTAGED -eq 0 ]]; then
+            hook_com[unstaged]+=" "
+        fi
+        hook_com[unstaged]+="${FG_RED}●%f"
+    fi
+
+    local NUM_AHEAD NUM_BEHIND
+    local -a COMMIT_DIFF
+    NUM_AHEAD=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD --count 2> /dev/null)
+    (( $NUM_AHEAD )) && COMMIT_DIFF+="${FG_GREEN}+${NUM_AHEAD}%f"
+
+    NUM_BEHIND=$(git rev-list HEAD..${hook_com[branch]}@{upstream} --count 2> /dev/null)
+    (( $NUM_BEHIND )) && COMMIT_DIFF+="${FG_RED}-${NUM_BEHIND}%f"
+
+    if [[ -n $COMMIT_DIFF ]]; then
+        hook_com[unstaged]+=" ${(j:/:)COMMIT_DIFF}"
+    fi
+
+    if [[ ${hook_com[action]} == "rebase" ]]; then
+        hook_com[action]="${LIGHTNING}"
+    elif [[ ${hook_com[action]} == "rebase-i" ]]; then
+        hook_com[action]="${LIGHTNING}"
+    elif [[ ${hook_com[action]} == "merge" ]]; then
+        hook_com[action]="${CROSS}"
+    fi
+}
+
+NL=$'\n'
+PROMPT_CHAR="%B%(!.#.)${RANGLE}%b"
+COLOR_PROMPT="%(?.${FG_CYAN}.${FG_RED})${PROMPT_CHAR}%f"
+
+precmd() {
+    vcs_info
+    PS1="${vcs_info_msg_0_}${NL}${COLOR_PROMPT} "
+}
