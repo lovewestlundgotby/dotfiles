@@ -10,6 +10,12 @@
 
 (setq doom-font (font-spec :family "Consolas NF" :size 14))
 
+;; See modeline plugin doom-modeline for options.
+(setq doom-modeline-buffer-file-name-style 'truncate-upto-root)
+
+;; Do not continue to comment new lines when o/O from a commented line
+(setq +evil-want-o/O-to-continue-comments 'nil)
+
 ;; Press ctrl+alt+tab to format region with clang-format
 (load "/usr/share/clang/clang-format.el")
 (global-set-key [C-M-tab] 'clang-format-region)
