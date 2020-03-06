@@ -1,4 +1,5 @@
 # Adopted from http://stackoverflow.com/questions/28573145/how-can-i-move-the-cursor-after-a-zsh-abbreviation
+# Added support to expand `...` to `../..` automatically.
 
 setopt extendedglob
 
@@ -182,6 +183,7 @@ for abbr in ${(k)abbrevs}; do
 done
 
 magic-abbrev-expand() {
+  zle expand-dots
   local MATCH
   LBUFFER=${LBUFFER%%(#m)[_a-zA-Z0-9]#}
   command=${abbrevs[$MATCH]}
@@ -205,11 +207,26 @@ no-magic-abbrev-expand() {
   LBUFFER+=' '
 }
 
+expand-dots() {
+    if [[ $LBUFFER =~ '\.\.\.+' ]]; then
+        LBUFFER=$LBUFFER:fs%\.\.\.%../..%
+    fi
+}
+
+function expand-dots-then-expand-or-complete() {
+    zle expand-dots
+    zle expand-or-complete
+}
+
+
 zle -N magic-abbrev-expand
 zle -N magic-abbrev-expand-and-execute
 zle -N no-magic-abbrev-expand
+zle -N expand-dots
+zle -N expand-dots-then-expand-or-complete
 
 bindkey " " magic-abbrev-expand
+bindkey "^I" expand-dots-then-expand-or-complete
 bindkey "^M" magic-abbrev-expand-and-execute
 bindkey "^x " no-magic-abbrev-expand
 bindkey -M isearch " " self-insert
