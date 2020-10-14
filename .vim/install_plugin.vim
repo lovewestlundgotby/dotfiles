@@ -35,6 +35,10 @@ Plugin 'VundleVim/Vundle.vim'
     Plugin 'sheerun/vim-polyglot'       " A lot of languages
 "" }
 
+"" Formatting {
+    Plugin 'psf/black'                  " Uncompromising python formatting
+"" }
+
 "" Git {
     Plugin 'tpope/vim-fugitive'
     Plugin 'airblade/vim-gitgutter'
