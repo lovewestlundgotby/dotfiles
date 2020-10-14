@@ -2,28 +2,45 @@
 
 ;; Place your private configuration here
 
-;; Decrease delay until which-key pops up.
-(setq which-key-idle-delay 0.4)
+(setq
+ ;; Font configuration.
+ doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 13)
 
-;; (setq display-line-numbers-type 'relative)
-(setq display-line-numbers-type nil)
+ ;; Decrease delay until which-key pops up.
+ which-key-idle-delay 0.3
+ display-line-numbers-type nil
 
-(setq doom-font (font-spec :family "Consolas NF" :size 14))
+ doom-modeline-buffer-file-name-style 'relative-from-project
+ doom-modeline-vcs-max-length 14
+ ;; Do not show buffer encoding, most stuff is LF UTF-8 anyway.
+ doom-modeline-buffer-encoding 'nil
 
-;; See modeline plugin doom-modeline for options.
-(setq doom-modeline-buffer-file-name-style 'truncate-upto-root)
+ ;; Do not continue to comment new lines when o/O from a commented line.
+ +evil-want-o/O-to-continue-comments 'nil
 
-;; Do not continue to comment new lines when o/O from a commented line
-(setq +evil-want-o/O-to-continue-comments 'nil)
+ ;; Switch to the new window after splitting.
+ evil-split-window-below t
+ evil-vsplit-window-right t
 
-;; Press ctrl+alt+tab to format region with clang-format
-(load "/usr/share/clang/clang-format.el")
+ ;; Show only file names in peek view.
+ lsp-ui-peek-show-directory 'nil
+ ;; Set (default) peek file list width.
+ lsp-ui-peek-list-width 50
+ )
+
+(setq )
+
+;; Do not format the default list of files and python on save.
+(after! format
+  (setq +format-on-save-enabled-modes (append +format-on-save-enabled-modes '(python-mode))))
+
+(after! magit
+  (magit-delta-mode +1))
+
+;; Press ctrl+alt+tab to format region with clang-format.
+;; Not that useful as saving a buffer formats it first.
+(load! "/usr/share/clang/clang-format.el")
 (global-set-key [C-M-tab] 'clang-format-region)
-
-;; Ivy bindings
-(with-eval-after-load 'ivy
-  ;; ctrl+q kills buffers in buffer mini window
-  (define-key ivy-minibuffer-map (kbd "C-q") 'ivy-switch-buffer-kill))
 
 ;; My custom C-mode indentation settings.
 (defun my-c-mode-common-hook ()
@@ -38,3 +55,5 @@
   (c-set-offset 'topmost-intro-cont 0)
   )
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+
+(load! "+doom-modeline")
