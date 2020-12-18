@@ -32,7 +32,7 @@
 
 ;; Do not format the default list of files and python on save.
 (after! format
-  (setq +format-on-save-enabled-modes (append +format-on-save-enabled-modes '(python-mode))))
+  (setq +format-on-save-enabled-modes (append +format-on-save-enabled-modes '(python-mode cmake-mode))))
 
 (after! magit
   (magit-delta-mode +1))
