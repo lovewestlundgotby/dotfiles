@@ -27,6 +27,7 @@ abbrevs=(
   # "epoch" "date +%s"
   # "epochms" 'echo $(($(gdate +%s%N)/1000000))'
   # "oedm" "osascript -e 'tell application \"System Events\" to tell appearance preferences to set dark mode to not dark mode'"
+  "zource"  "source $ZDOTDIR/.zshrc"
   )
 
 # Global protect VPN
@@ -83,6 +84,9 @@ abbrevs+=(
   "gcane" "git commit --amend --no-edit"
 
   "gco"   "git checkout"
+  "gcb"   "git checkout -b"
+  "gcob"  "git branch | fzf | cut -c 3- | xargs git checkout"
+  "gcom"  "git checkout -"
   "gcm"   "git checkout master"
   "gcd"   "git checkout develop"
   "gcl"   "git clone"
@@ -96,7 +100,7 @@ abbrevs+=(
   # Remove local branches merged to HEAD.
   "gbdm"   'git branch --merged | grep -v "\*\|master\|develop" | xargs -n1 git branch -d'
   # Remove remote branches that exist locally and have been merged to HEAD.
-  "gbdmr" 'git branch -r --merged | sed ",origin/,," | xargs -n1 git branch -D 2> /dev/null'
+  "gbdmr" 'git branch -r --merged | sed "s,origin/,," | xargs -n1 git branch -D 2> /dev/null'
 
   "gd"    "git diff"
   # "gdm"   "git diff origin/master.."
@@ -148,8 +152,6 @@ abbrevs+=(
   "gstl"  "git stash list"
   "gstp"  "git stash pop"
   "gstd"  "git stash drop"
-
-  "gcb"   "git checkout -b"
 
   "ggsup" 'git branch --set-upstream-to=origin/$(git branch | grep \* | cut -d " " -f2)'
   "gpsup" 'git push --set-upstream origin $(git branch | grep \* | cut -d " " -f2)'

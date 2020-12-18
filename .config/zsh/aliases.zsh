@@ -2,6 +2,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias mkdir='mkdir -pv'
 alias cp='cp -i'
+alias mv='mv -i'
 alias df='df --human-readable'                                                # Human-readable sizes
 alias free='free --human'                                            # Show sizes in MB
 
@@ -46,7 +47,6 @@ if [ -x /usr/bin/dircolors ]; then
     #alias vdir='vdir --color=auto'
 fi
 
-alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip -color=auto'
 
@@ -54,11 +54,18 @@ if [ -x /usr/bin/rg ]; then
   alias rg='rg --smart-case'
 fi
 
-# some more ls aliases
-alias ll='ls -AlFhp'
-alias la='ls -Ahp'
-alias l='ls -gGFhp'
-alias lr='ls -R'
+if command -v exa > /dev/null; then
+    alias exa="exa --group-directories-first"
+    alias l="exa -1"
+    alias ll="exa -l"
+    alias la="ll -a"
+    alias lr="ll -T"
+else
+    alias l='ls -gGFhp'
+    alias ll='ls -AlFhp'
+    alias la='ls -Ahp'
+    alias lr='ls -R'
+fi
 
 # git aliases
 # alias gstat='git status'
