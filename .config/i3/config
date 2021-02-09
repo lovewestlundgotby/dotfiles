@@ -365,8 +365,6 @@ bindsym Print exec maim ~/Pictures/screenshot_$(date +%Y%m%d)_$(date +%H%M%S).pn
 # Automatically load the first detected profile.
 exec_always autorandr --change
 
-exec_always xset r rate 270 35
-
 # Set default audio output to analog 3.5 mm on work laptop
 # exec --no-startup-id pacmd set-default-sink 3
 
