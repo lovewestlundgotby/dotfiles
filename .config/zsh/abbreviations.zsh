@@ -149,9 +149,10 @@ abbrevs+=(
   "gsgl"  "git submodule -q foreach git pull -q origin master"
 
   "gsta"  "git stash push"
+  "gstd"  "git stash drop"
   "gstl"  "git stash list"
   "gstp"  "git stash pop"
-  "gstd"  "git stash drop"
+  "gsts"  "git stash show"
 
   "ggsup" 'git branch --set-upstream-to=origin/$(git branch | grep \* | cut -d " " -f2)'
   "gpsup" 'git push --set-upstream origin $(git branch | grep \* | cut -d " " -f2)'
