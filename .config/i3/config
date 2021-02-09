@@ -162,8 +162,8 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 
-for_window [class="matplotlib"] floating enabled
-for_window [class="Microsoft Teams - Preview" window_type="notification"] floating enabled
+for_window [class="Matplotlib"] floating enable
+for_window [class="Microsoft Teams - Preview" window_type="notification"] floating enable
 for_window [class="Microsoft Teams - Preview" window_type="normal"] move container to workspace $ws8
 for_window [class="mattermost"] move container to workspace $ws8
 for_window [class="signal"] move container to workspace $ws9
