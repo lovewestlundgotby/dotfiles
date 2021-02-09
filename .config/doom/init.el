@@ -140,7 +140,8 @@
        ;;factor
        ;;ledger            ; an accounting system in Emacs
        ;;lua               ; one-based indices? one-based indices
-       markdown            ; writing docs for people to ignore
+       (markdown         ; writing docs for people to ignore
+        +grip)           ; or with a live preview, for yourself
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
@@ -148,7 +149,7 @@
         +dragndrop         ; drag & drop files/images into org buffers
         ;;+hugo            ; use Emacs for hugo blogging
         ;;+jupyter         ; ipython/jupyter support for babel
-        ;;+pandoc          ; export-with-pandoc support
+        +pandoc          ; export-with-pandoc support
         ;;+pomodoro        ; be fruitful with the tomato technique
         +present)          ; using org-mode for presentations
        ;;perl              ; write code no one else can comprehend
