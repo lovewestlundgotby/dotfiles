@@ -317,7 +317,9 @@ bindsym XF86AudioRaiseVolume exec change_volume.sh +2%
 # Lower volume 2%
 bindsym XF86AudioLowerVolume exec change_volume.sh -2%
 # Mute sound
-bindsym XF86AudioMute exec change_volume.sh toggle
+bindsym XF86AudioMute exec change_volume.sh audio-toggle
+# Mute microphone
+bindsym Ctrl+Shift+i exec change_volume.sh mic-toggle
 # Play/pause the music
 bindsym XF86AudioPlay exec playerctl play-pause
 # Play previous song
