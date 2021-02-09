@@ -1,0 +1,2 @@
+xset r rate 270 35 &
+exec i3
