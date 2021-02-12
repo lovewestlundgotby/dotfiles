@@ -14,7 +14,6 @@ abbrevs=(
   # "kp" 'sudo kill $(ps auxww | grep ssh | grep -e "^pair" | awk "{print \$2}") ; chmod 770 /tmp/tmux-501'
   # "jsun" "python -mjson.tool"
   # "pag" 'ps auxww | grep'
-  "fdg" "find . | grep"
   "pgr" "| grep"
   # "awkp" "| awk '{print \$__CURSOR__}'"
   # "tstamp" "| while read line; do ; echo \$(date | cut -f4 -d ' ') \$line; done"
@@ -165,7 +164,7 @@ abbrevs+=(
 )
 
 magic-abbrev-expand() {
-  zle expand-dots
+  expand-dots
   local MATCH
   LBUFFER=${LBUFFER%%(#m)[_a-zA-Z0-9]#}
   command=${abbrevs[$MATCH]}
@@ -175,7 +174,11 @@ magic-abbrev-expand() {
     RBUFFER=${LBUFFER[(ws:__CURSOR__:)2]}
     LBUFFER=${LBUFFER[(ws:__CURSOR__:)1]}
   else
-    zle self-insert
+    if [[ -z ${MATCH} ]]; then
+      zle expand-or-complete
+    else
+      no-magic-abbrev-expand
+    fi
   fi
 }
 
@@ -195,20 +198,12 @@ expand-dots() {
     fi
 }
 
-function expand-dots-then-expand-or-complete() {
-    zle expand-dots
-    zle expand-or-complete
-}
-
-
 zle -N magic-abbrev-expand
 zle -N magic-abbrev-expand-and-execute
 zle -N no-magic-abbrev-expand
 zle -N expand-dots
-zle -N expand-dots-then-expand-or-complete
 
-bindkey " " magic-abbrev-expand
-bindkey "^I" expand-dots-then-expand-or-complete
-bindkey "^M" magic-abbrev-expand-and-execute
-bindkey "^x " no-magic-abbrev-expand
+bindkey "^I" magic-abbrev-expand              # tab
+bindkey "^M" magic-abbrev-expand-and-execute  # return
+bindkey "^@" no-magic-abbrev-expand           # ctrl+space
 bindkey -M isearch " " self-insert
