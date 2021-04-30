@@ -67,7 +67,7 @@ font-1 = JetBrainsMono Nerd Font:size=12;2
 
 modules-left = i3
 modules-center = popup-calendar
-modules-right = pulseaudio xkeyboard wlan eth battery temperature powermenu
+modules-right = pulseaudio xkeyboard battery temperature
 
 tray-position = right
 tray-padding = 2
