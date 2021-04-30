@@ -53,7 +53,9 @@ count_patches () {
                 ;;
             ([#]*) ;& # Commented line, skip.
             ((x|exec) *) ;& # Rebase exec command, skip.
-            ((b|break)*) ;&# Rebase break command, skip.
+            ((b|break)*)  # Rebase break command, skip.
+                continue
+                ;;
             (*)
                 echo "count_patches: unknown rebase verb"
                 continue
