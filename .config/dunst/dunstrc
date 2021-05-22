@@ -30,7 +30,22 @@
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
     geometry = "300x5-30+20"
-    # geometry = "350x4-25+25"
+
+    # Turn on the progess bar
+    progress_bar = true
+
+    # Set the progress bar height. This includes the frame, so make sure
+    # it's at least twice as big as the frame width.
+    progress_bar_height = 10
+
+    # Set the frame width of the progress bar
+    progress_bar_frame_width = 1
+
+    # Set the minimum width for the progress bar
+    progress_bar_min_width = 150
+
+    # Set the maximum width for the progress bar
+    progress_bar_max_width = 300
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -53,21 +68,22 @@
     # notifications.
     # Set to 0 to disable.
     separator_height = 2
-    # separator_height = 1
 
     # Padding between text and separator.
-    padding = 8
-    # padding = 6
+    padding = 10
 
     # Horizontal padding.
-    horizontal_padding = 8
-    # horizontal_padding = 6
+    horizontal_padding = 12
+
+    # Padding between text and icon.
+    text_icon_padding = 0
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 3
+    frame_width = 2
 
     # Defines color of the frame around the notification window.
+    frame_color = "#33353e"
     frame_color = "#007fbf"
 
     # Define a color for the separator.
@@ -234,6 +250,16 @@
     # user defined timeout.
     ignore_dbusclose = false
 
+    ### Wayland ###
+    # These settings are Wayland-specific. They have no effect when using X11
+
+    # Uncomment this if you want to let notications appear under fullscreen
+    # applications (default: overlay)
+    # layer = top
+
+    # Set this to true to use X11 output on Wayland.
+    force_xwayland = false
+
     ### Legacy
 
     # Use the Xinerama extension instead of RandR for multi-monitor support.
@@ -271,6 +297,10 @@
     # where there are multiple screens with very different dpi values.
     per_monitor_dpi = false
 
+# The internal keyboard shortcut support in dunst is now considered deprecated
+# and should be replaced by dunstctl calls. You can use the configuration of your
+# WM or DE to bind these to shortcuts of your choice.
+# Check the dunstctl manual page for more info.
 [shortcuts]
 
     # Shortcuts are specified as [modifier+][modifier+]...key
@@ -278,32 +308,33 @@
     # "mod3" and "mod4" (windows-key).
     # Xev might be helpful to find names for keys.
     
-    # Close notification.
+    # Close notification. Equivalent dunstctl command:
+    # dunstctl close
     close = ctrl+space
     
-    # Close all notifications.
+    # Close all notifications. Equivalent dunstctl command:
+    # dunstctl close-all
     close_all = ctrl+shift+space
 
-    # Redisplay last message(s).
-    # On the US keyboard layout "grave" is normally above TAB and left
-    # of "1". Make sure this key actually exists on your keyboard layout,
-    # e.g. check output of 'xmodmap -pke'
+    # Redisplay last message(s). Equivalent dunstctl command:
+    # dunstctl history-pop
     history = ctrl+grave
     
-    # Context menu.
+    # Context menu. Equivalent dunstctl command:
+    # dunstctl context
     context = ctrl+shift+period
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#263238"
+    background = "#282a36"
     foreground = "#556064"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_normal]
-    background = "#263238"
+    background = "#282a36"
     foreground = "#F9FAF9"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
@@ -423,12 +454,14 @@
 #    summary = *says*
 #    urgency = critical
 
-#[Claws Mail]
-#    appname = claws-mail
-#    category = email.arrived
+#[twitter]
+#    appname = Pidgin
+#    summary = *twitter.com*
 #    urgency = normal
-#    background = "#2F899E"
-#    foreground = "#FFA247"
+#
+#[stack-volumes]
+#    appname = "some_volume_notifiers"
+#    set_stack_tag = "volume"
 
 [change_volume.sh]
     summary = "Volume*"
