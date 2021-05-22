@@ -241,7 +241,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlo1
+interface = wlp8s0
 interval = 3.0
 
 format-connected = <ramp-signal>  <label-connected>
@@ -264,7 +264,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = eno2
+interface = enp9s0
 interval = 3.0
 
 format-connected-underline = #55aa55
@@ -339,7 +339,7 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
-battery = BAT0
+battery = BAT1
 adapter = AC
 full-at = 98
 
@@ -380,8 +380,10 @@ ramp-capacity-8 = 
 ramp-capacity-9 = 
 
 [module/temperature]
+; To list all the zone types, run
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
 type = internal/temperature
-thermal-zone = 9
+thermal-zone = 1
 base-temperature = 40
 warn-temperature = 80
 
