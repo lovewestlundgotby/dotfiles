@@ -1,6 +1,7 @@
 fpath+=( $ZDOTDIR/completions )
 
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' special-dirs true
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*:options' list-colors '=^(-- *)=33'
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'l:|=* r:|=*'

@@ -83,11 +83,11 @@ abbrevs+=(
   "gcane" "git commit --amend --no-edit"
 
   "gco"   "git checkout"
-  "gcb"   "git checkout -b"
-  "gcob"  "git branch | fzf | cut -c 3- | xargs git checkout"
-  "gcom"  "git checkout -"
-  "gcm"   "git checkout master"
-  "gcd"   "git checkout develop"
+  "gsc"   "git switch -c"
+  "gsb"  "git branch | fzf | cut -c 3- | xargs git switch"
+  "gsm"  "git switch -"
+  "gsm"   "git switch master"
+  "gsd"   "git switch develop"
   "gcl"   "git clone"
   "gb"    "git branch"
   "gbm"   "git branch -M"
@@ -165,21 +165,26 @@ abbrevs+=(
 
 magic-abbrev-expand() {
   expand-dots
+  # Docs: http://zsh.sourceforge.net/Doc/Release/Expansion.html#Parameter-Expansion
+  # %% : extract the last word from LBUFFER consisting of [_a-zA-Z0-9] into MATCH.
   local MATCH
   LBUFFER=${LBUFFER%%(#m)[_a-zA-Z0-9]#}
+  # Lookup MATCH in abbreviations.
   command=${abbrevs[$MATCH]}
+  # If we found a command, add it to LBUFFER, otherwise add MATCH back.
   LBUFFER+=${command:-$MATCH}
 
   if [[ "${command}" =~ "__CURSOR__" ]]; then
     RBUFFER=${LBUFFER[(ws:__CURSOR__:)2]}
     LBUFFER=${LBUFFER[(ws:__CURSOR__:)1]}
   else
-    if [[ -z ${MATCH} ]]; then
-      zle expand-or-complete
-    else
-      no-magic-abbrev-expand
-    fi
+    no-magic-abbrev-expand
   fi
+}
+
+magic-abbrev-expand-and-complete() {
+  magic-abbrev-expand
+  zle menu-complete
 }
 
 magic-abbrev-expand-and-execute() {
@@ -193,17 +198,25 @@ no-magic-abbrev-expand() {
 }
 
 expand-dots() {
-    if [[ $LBUFFER =~ '\.\.\.+' ]]; then
-        LBUFFER=$LBUFFER:fs%\.\.\.%../..%
-    fi
+  if [[ ${LBUFFER} =~ "\.\.\.+" ]]; then
+    LBUFFER=${LBUFFER:fs%...%../..}
+  fi
 }
 
+expand-dots-and-complete() {
+  expand-dots
+  zle menu-complete
+}
+
+
 zle -N magic-abbrev-expand
+zle -N magic-abbrev-expand-and-complete
 zle -N magic-abbrev-expand-and-execute
 zle -N no-magic-abbrev-expand
 zle -N expand-dots
+zle -N expand-dots-and-complete
 
-bindkey "^I" magic-abbrev-expand              # tab
-bindkey "^M" magic-abbrev-expand-and-execute  # return
-bindkey "^@" no-magic-abbrev-expand           # ctrl+space
+bindkey "^I" expand-dots-and-complete           # tab
+bindkey "^M" magic-abbrev-expand-and-execute    # return
+bindkey "^@" magic-abbrev-expand                # ctrl+space
 bindkey -M isearch " " self-insert
